@@ -14,7 +14,7 @@
     name: 'Document',
     methods: {
       resetStock () {
-        this.$store.commit(RESET, {index: this.$route.params.id})
+        this.$store.dispatch(RESET, {index: this.$route.params.id})
       }
     },
     computed: {

@@ -1,4 +1,5 @@
 import * as types from './mutation-types'
+import actions from './actions'
 
 const state = {
   items: [
@@ -21,5 +22,6 @@ export const mutations = {
 
 export default {
   state,
-  mutations
+  mutations,
+  actions
 }
