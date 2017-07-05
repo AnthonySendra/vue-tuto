@@ -1,10 +1,10 @@
 <template>
   <ul>
-    <li v-for="item in items" :class="{empty: item.stock < 1}">
+    <li v-for="(item, index) in $store.state.documents.items" :class="{empty: item.stock < 1}">
       <item
         :item="item"
-        @increase="increase(item)"
-        @decrease="decrease(item)"
+        @increase="increase(index)"
+        @decrease="decrease(index)"
       >
       </item>
     </li>
@@ -19,26 +19,19 @@
 
 <script>
   import Item from './Item'
+  import {DECREASE, INCREASE} from '../store/modules/documents/mutation-types'
 
   export default {
     name: 'List',
     components: {
       Item
     },
-    data () {
-      return {
-        items: [
-          {name: 'Tee-shirt', stock: 10},
-          {name: 'Polo', stock: 0}
-        ]
-      }
-    },
     methods: {
-      decrease (item) {
-        item.stock--
+      decrease (index) {
+        this.$store.commit(DECREASE, {index})
       },
-      increase (item) {
-        item.stock++
+      increase (index) {
+        this.$store.commit(INCREASE, {index})
       }
     }
   }
