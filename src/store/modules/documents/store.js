@@ -13,6 +13,9 @@ export const mutations = {
   },
   [types.DECREASE] (state, payload) {
     state.items[payload.index].stock--
+  },
+  [types.RESET] (state, payload) {
+    state.items[payload.index].stock = 0
   }
 }
 

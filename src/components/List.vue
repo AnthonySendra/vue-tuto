@@ -5,6 +5,7 @@
         :item="item"
         @increase="increase(index)"
         @decrease="decrease(index)"
+        :index="index"
       >
       </item>
     </li>
