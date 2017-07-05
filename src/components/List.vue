@@ -1,9 +1,12 @@
 <template>
   <ul>
     <li v-for="item in items" :class="{empty: item.stock < 1}">
-      <p>
-        <span @click="decrease(item)">-</span> {{ item.name }} : {{ item.stock }} <span @click="increase(item)">+</span>
-      </p>
+      <item
+        :item="item"
+        @increase="increase(item)"
+        @decrease="decrease(item)"
+      >
+      </item>
     </li>
   </ul>
 </template>
@@ -15,8 +18,13 @@
 </style>
 
 <script>
+  import Item from './Item'
+
   export default {
     name: 'List',
+    components: {
+      Item
+    },
     data () {
       return {
         items: [
@@ -27,10 +35,10 @@
     },
     methods: {
       decrease (item) {
-        item.stock = item.stock - 1
+        item.stock--
       },
       increase (item) {
-        item.stock = item.stock + 1
+        item.stock++
       }
     }
   }
